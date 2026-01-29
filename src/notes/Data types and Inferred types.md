@@ -94,3 +94,7 @@ Here type obviously mean the Data type. Kotlin is a Statically typed language me
 But, having no type mentioned also has it’s benefits like concise code and so on
 
 ## Inferred Typing
+Inferred typing in kotlin means most of the time we can ignore the data type for the value if the value is easily identifiable by kotlin. Most of the time when creating a variable with a value assigned directly at the time declaration we can omit the data type and just mention the variable name and whether it's modifiable or not like this
+```kotlin
+val name = "John"
+```
