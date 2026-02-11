@@ -2,8 +2,11 @@ package oops.polymorphism;
 
 public class BikeDriver extends Driver {
 
-    public BikeDriver(String driverName, String licenseNumber) {
+    float petrolCharges;
+
+    public BikeDriver(String driverName, String licenseNumber, float petrolCharges) {
         super(driverName, licenseNumber);
+        this.petrolCharges = petrolCharges;
     }
 
     @Override
@@ -21,6 +24,11 @@ public class BikeDriver extends Driver {
 
     void wearHelmet() {
         System.out.println("Wearing helmet...");
+    }
+
+    float getPetrolCharges() {
+        int tips = 100;
+        return petrolCharges + tips;
     }
 
 }
