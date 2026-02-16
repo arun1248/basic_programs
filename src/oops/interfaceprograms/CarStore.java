@@ -15,6 +15,9 @@ public class CarStore {
 //        Car car = new Car();
 //        car.engine();
 
+        Car.headLights(); // just like normal static method we can call using Interface name. Override not possible
+        f1Car.steering(); // use object to call a default method form interface. Override is possible
+
     }
 
     void displayCar(Car car) {

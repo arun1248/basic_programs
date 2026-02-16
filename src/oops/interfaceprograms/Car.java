@@ -11,4 +11,24 @@ public interface Car {
     void engine();
 
     int getSeats();
+
+    static void headLights() {
+        System.out.println("Head lights");
+
+        Car c = new F1Car();
+        c.steering();
+        someLoop();
+    }
+
+    private static void someLoop() {
+        for (int i = 0; i < 5; i++) {
+
+        }
+    }
+
+    default void steering() {
+        System.out.println("Steer to Move or turn");
+        someLoop();
+    }
+
 }
