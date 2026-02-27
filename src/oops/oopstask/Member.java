@@ -11,7 +11,7 @@ public class Member extends User {
         super(userId, name);
         this.borrowedBooks = new ArrayList<>();
 
-        System.out.println("this.borrowedBooks: "+this.borrowedBooks);
+        System.out.println("this.borrowedBooks: " + this.borrowedBooks);
         for (int i = 0; i < borrowedBooks.size(); i++) {
             if (borrowedBooks.get(i) instanceof Book)
                 borrowBook((Book) borrowedBooks.get(i));
@@ -24,9 +24,9 @@ public class Member extends User {
 
     @Override
     void displayDetails() {
-        System.out.println("userId: "+userId);
-        System.out.println("name: "+name);
-        System.out.println("borrowedBooks: "+borrowedBooks.size());
+        System.out.println("userId: " + userId);
+        System.out.println("name: " + name);
+        System.out.println("borrowedBooks: " + borrowedBooks.size());
     }
 
     void borrowBook(Book book) {
@@ -34,7 +34,7 @@ public class Member extends User {
             book.isAvailable = false;
             borrowedBooks.add(book);
         } else {
-            System.out.println(book.title+": "+"is not available");
+            System.out.println(book.title + ": " + "is not available");
         }
     }
 
@@ -45,6 +45,24 @@ public class Member extends User {
         } else {
             System.out.println("Book is not available...");
         }
+    }
+
+    void returnBook(int bookId) {
+        boolean flag = false;
+        for (int i = 0; i < borrowedBooks.size(); i++) {
+            if (borrowedBooks.get(i) instanceof Book borrowedBook) {
+                if (borrowedBook.bookId == bookId) {
+                    borrowedBook.isAvailable = true;
+                    borrowedBooks.remove(borrowedBook);
+                    flag = true;
+                }
+            }
+        }
+
+        if (!flag) {
+            System.out.println("Book is not available...");
+        }
+
     }
 
     @Override
