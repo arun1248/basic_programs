@@ -1,0 +1,17 @@
+Using Scanner in OOPS task
+- Create the skeleton for the flow chart
+- Create ShopRunner class to get user data and use existing skeleton created
+    - Use instance variables and methods like List Products
+    - Use Scanner inside methods (getProductsFromUser, getAdminFromUser, getCustomerFromUser, etc.,)
+        - hint: user scanner's close function
+- First Admin flow is to create Admin and add Products
+- Customer flow
+    - get customer details like products to buy, hint: use product id to get products
+    - after getting products create Customer object with products
+    - show a message to like "proceed to buy"
+    - Create Order object using customer object
+    - Show a total amount to pay
+    - Ask for payment 1 to Card payment and etc.,
+    - Ask user to enter the amount and validate the amount is equal to the calculated amount
+        - if yes show a successful message
+        - else show a failure message

@@ -1,6 +1,7 @@
 package oops.oopstask;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class LibraryRunner {
 
@@ -58,13 +59,60 @@ public class LibraryRunner {
         raja.returnBook(mysteryOfTheNight);
         annaLibrary.listBooks(true);
 
+        // Borrow Book
         System.out.println("*Borrowing Book from a member");
         raja.borrowBook(lostKingdom);
         annaLibrary.listBooks(true);
 
 
+        /*
+        *  show the possible actions using sout as 1, add a book. 2, remove a book. etc.,
+        *  get the value from user (1 to 5)
+        *  use a switch case -> if 1: get book details, if 2: get book id to remove the book
+        *       -> use id's to perform action like remove, return and borrow
+        *       -> overload existing functions
+        * */
 
 
+        ArrayList borrowedBooksNazrin = new ArrayList();
+        borrowedBooksNazrin.add(dataStructures);
+        Member nazrin = new Member("Nazrin", borrowedBooksNazrin);
+
+        annaLibrary.listBooks(true);
+
+        System.out.println("Welcome to Member CLI");
+        System.out.println("1, borrow a book");
+        System.out.println("2, return a book");
+
+        Scanner sc = new Scanner(System.in);
+        int userOption = Integer.parseInt(sc.nextLine());
+
+        switch (userOption) {
+            case 1: {
+                annaLibrary.listBooks(true);
+                System.out.println("Enter book id to borrow:");
+                int borrowBookId = Integer.parseInt(sc.nextLine());
+                for (int i = 0; i < annaLibrary.books.size(); i++) {
+                    if (annaLibrary.books.get(i) instanceof Book book) {
+                        if (book.bookId == borrowBookId) {
+                            nazrin.borrowBook(book);
+                        }
+                    }
+                }
+                break;
+            }
+            case 2: {
+                System.out.println("Enter book id to return");
+                int returnBookId = Integer.parseInt(sc.nextLine());
+                nazrin.returnBook(returnBookId);
+                break;
+            }
+            default: {
+                System.out.println("Invalid number");
+            }
+        }
+
+        annaLibrary.listBooks(true);
 
     }
 }
