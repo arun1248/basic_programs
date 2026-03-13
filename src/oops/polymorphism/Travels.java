@@ -68,6 +68,8 @@ public class Travels {
         Driver[] drivers = {carDriver1, carDriver2, carDriver3, bikeDriver1, bikeDriver2};
         for (int i=0; i < drivers.length; i++) {
             drivers[i].salary();
+            System.out.println("put salary() with list");
+            putSalaryAndOtherCharges(drivers[i]);
         }
 
         putSalaries(drivers);

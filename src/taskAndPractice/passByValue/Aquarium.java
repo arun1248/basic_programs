@@ -1,11 +1,11 @@
-package taskAndPractice;
+package taskAndPractice.passByValue;
 
-public class aquarium {
+public class Aquarium {
 
     String fishName;
     int quantity;
 
-    aquarium(String InfishName , int Inquantity)
+    Aquarium(String InfishName , int Inquantity)
     {
         fishName = InfishName;
         quantity = Inquantity;
