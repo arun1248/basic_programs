@@ -14,6 +14,10 @@ public class Laptop extends Computer {
         this.isFingerUnlockAvailable = isFingerUnlockAvailable;
     }
 
+    public void setFingerUnlockAvailable(boolean fingerUnlockAvailable) {
+        isFingerUnlockAvailable = fingerUnlockAvailable;
+    }
+
     @Override
     void display() {
         super.display();

@@ -1,0 +1,1 @@
+LinkedList with capacity sample with funs like offer
