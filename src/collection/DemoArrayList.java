@@ -44,6 +44,7 @@ public class DemoArrayList {
         // Generics
         List<Laptop> laptops = new ArrayList<Laptop>();
         laptops.add(new Laptop(8, "intel", false));
+        laptops.add(null);
 //        laptops.add(98);
 
         laptops.get(0).setFingerUnlockAvailable(true);

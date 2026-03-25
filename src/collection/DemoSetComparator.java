@@ -37,6 +37,7 @@ public class DemoSetComparator {
         adminTreeSetName.add(new Admin("name", 30, 14));
         adminTreeSetName.add(new Admin("nazrin", 60, 26));
         adminTreeSetName.add(new Admin("raja", 60, 12));
+//        adminTreeSetName.add(null);
         System.out.println("new TreeSet<>(): "+adminTreeSetName);
 
         ArrayList<Admin> list = new ArrayList<>(adminTreeSetName);

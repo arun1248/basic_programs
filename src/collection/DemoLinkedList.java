@@ -13,6 +13,7 @@ public class DemoLinkedList {
         list.add("Banana");
         list.addLast("Cherry");
         list.addFirst("Apricot");
+        list.add(null);
 
         System.out.println("Original list: " + list);
 
