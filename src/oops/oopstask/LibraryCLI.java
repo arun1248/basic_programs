@@ -1,12 +1,13 @@
 package oops.oopstask;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class LibraryCLI {
 
     public static void main(String[] args) {
-        ArrayList books = new ArrayList();
+        ArrayList<Book> books = new ArrayList();
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -26,10 +27,11 @@ public class LibraryCLI {
                 break;
             }
         }
+        System.out.println("Before sorting : "+books);
+        Collections.sort(books);
+        System.out.println("After sorting : "+books);
 
-        System.out.println(books);
-
-        ArrayList members = new ArrayList();
+        ArrayList<Member> members = new ArrayList();
 
 //        Member member = new Member("arun", books);
 
@@ -45,7 +47,7 @@ public class LibraryCLI {
                 members.add(new Member(name, new ArrayList()));
                 break;
             } else if (userChoice.equals("c")) {
-                ArrayList borrowedBooks = new ArrayList();
+                ArrayList<Book> borrowedBooks = new ArrayList();
 
                 while (true) {
                     System.out.println("Enter book id");
@@ -53,11 +55,12 @@ public class LibraryCLI {
                     int bookId = Integer.parseInt(sc.nextLine());
 
                     for (int i = 0; i < books.size(); i++) {
-                        if (books.get(i) instanceof Book book) {
+                        //if (books.get(i) instanceof Book book) {
+                        Book book = books.get(i);
                             if (book.bookId == bookId) {
                                 borrowedBooks.add(books.get(i));
                             }
-                        }
+                        //}
                     }
                     // add a print to say if book id is not available
 

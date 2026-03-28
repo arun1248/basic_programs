@@ -1,6 +1,9 @@
 package oops.oopstask;
+import collection.User;
 
-public class Book {
+import java.util.Objects;
+
+public class Book implements Comparable<Book>{
 
     int bookId;
     String title;
@@ -22,5 +25,10 @@ public class Book {
                 ", author='" + author + '\'' +
                 ", isAvailable=" + isAvailable +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Book o) {
+        return this.title.compareTo(o.title);
     }
 }

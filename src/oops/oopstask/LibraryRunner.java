@@ -7,8 +7,7 @@ public class LibraryRunner {
 
     public static void main(String[] args) {
 
-        ArrayList books = new ArrayList();
-
+        ArrayList<Book> books = new ArrayList();
         Book lostKingdom = new Book(1, "The Lost Kingdom", "Arun Kumar", true);
         Book javaBasics = new Book(2, "Java Basics", "Ravi Shankar", true);
         Book mysteryOfTheNight = new Book(3, "Mystery of the Night", "Priya Nair", true);
@@ -21,15 +20,15 @@ public class LibraryRunner {
         books.add(dataStructures);
         books.add(finalJourney);
 
-        ArrayList members = new ArrayList();
+        ArrayList<Member> members = new ArrayList();
 
-        ArrayList borrowedListRaj = new ArrayList();
+        ArrayList<Book> borrowedListRaj = new ArrayList();
         borrowedListRaj.add(lostKingdom);
         borrowedListRaj.add(javaBasics);
 
         Member raj = new Member(11, "Raj", borrowedListRaj);
 
-        ArrayList borrowedListRaja = new ArrayList();
+        ArrayList<Book> borrowedListRaja = new ArrayList();
         borrowedListRaja.add(mysteryOfTheNight);
         Member raja = new Member(11, "Raj", borrowedListRaja);
 
