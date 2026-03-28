@@ -37,14 +37,14 @@ public class DemoSetComparator {
         adminTreeSetName.add(new Admin("name", 30, 14));
         adminTreeSetName.add(new Admin("nazrin", 60, 26));
         adminTreeSetName.add(new Admin("raja", 60, 12));
-        System.out.println("new TreeSet<>(adminTreeSet): "+adminTreeSetName);
+        System.out.println("new TreeSet<>(): "+adminTreeSetName);
 
         ArrayList<Admin> list = new ArrayList<>(adminTreeSetName);
         Collections.sort(list, ageSort);
         System.out.println(list);
 
 
-        new ArrayList<>(); // anonymous object or nameless object
+        new Admin("Name", 22,22); // anonymous object or nameless object
         Comparator c = new Comparator<Admin>() { // anonymous class, {} is used to give implementation and new is used to create the object for implementation
 
             @Override
@@ -56,7 +56,7 @@ public class DemoSetComparator {
         Collections.sort(adminList, c);
         System.out.println(adminList);
 
-        Comparator c1 = (Comparator<Admin>) (o1, o2) -> {
+        Comparator<Admin> c1 = (o1, o2) -> {
             if (o1.name.equals(o2.name))
                 return 0;
             else if (o1.name.compareTo(o2.name) > 0)
@@ -68,12 +68,20 @@ public class DemoSetComparator {
             return o1.name.compareTo(o2.name);
         });
 
+        Comparator<Admin> a = (Admin o1, Admin o2) -> { // anonymous function or method
+            if (o1.age == o2.age)
+                return 0;
+            else if (o1.age > o2.age) {
+                return 1;
+            }
+            return -1;
+        };
+
     }
 
 }
 
 class AdminAgeSort implements Comparator<Admin> {
-
     @Override
     public int compare(Admin o1, Admin o2) {
         if (o1.age == o2.age)
@@ -83,6 +91,5 @@ class AdminAgeSort implements Comparator<Admin> {
         }
         return -1;
     }
-
 }
 
