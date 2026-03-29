@@ -1,0 +1,19 @@
+Create an ArrayList of strings (e.g., shop tasks: "Open 9 AM", "Update gold rate"), add 5 items, print the list.
+
+Insert "Check silver stock" at index 2, then print.
+
+Retrieve and print the 3rd item using get(2). Update it to "Serve customer" with set(2, "...").
+
+Remove the 1st item with remove(0), print size with size().
+
+Search if "Update gold rate" exists using contains(), print true/false.
+
+Iterate and print all items with for-each loop: for (String task : tasks) { ... }.
+
+Copy one ArrayList (daily tasks) to another (backup) using constructor or addAll().
+
+Sort tasks alphabetically with Collections.sort(tasks). (Import java.util.Collections.)
+
+Reverse the list using Collections.reverse(tasks).
+
+Extract sublist from index 1 to 3: tasks.subList(1, 4)

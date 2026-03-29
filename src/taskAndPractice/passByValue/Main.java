@@ -1,15 +1,15 @@
-package taskAndPractice;
+package taskAndPractice.passByValue;
 
 public class Main {
 
     public static void main(String args[])
     {
-        aquarium angelFish = new aquarium("Angel Fish", 4);
+        Aquarium angelFish = new Aquarium("Angel Fish", 4);
         angelFish.display();
-        aquarium tetra = new aquarium("Tetra Fish", 6);
+        Aquarium tetra = new Aquarium("Tetra Fish", 6);
         tetra.display();
 
-        aquarium fighter = new aquarium("Fighter", 2);
+        Aquarium fighter = new Aquarium("Fighter", 2);
         fighter.display();
         Main obj = new Main();
         obj.addFish(fighter, 2);
@@ -17,7 +17,7 @@ public class Main {
         fighter.display();
     }
 
-    void addFish(aquarium obj, int quantityAdd)
+    void addFish(Aquarium obj, int quantityAdd)
     {
         obj.quantity = obj.quantity + quantityAdd;
     }

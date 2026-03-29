@@ -1,0 +1,19 @@
+Create a LinkedList<String> shopQueue = new LinkedList<>();, add 4 customers ("Cust1", "Cust2", etc.), print with for-each loop.
+
+Add "VIP Cust" at front with addFirst(), add "Walk-in" at end with addLast().
+
+Get first customer: shopQueue.getFirst(), last: shopQueue.getLast().
+
+Remove first served: shopQueue.removeFirst() or pollFirst().
+
+Check if "Cust1" exists: shopQueue.contains("Cust1").
+
+Insert "New Cust" at index 2: shopQueue.add(2, "New Cust")
+
+Iterate in reverse: Iterator<String> it = shopQueue.descendingIterator(); while(it.hasNext()) { ... }.
+
+Convert to ArrayList: ArrayList<String> arr = new ArrayList<>(shopQueue);.
+
+Clone the list: LinkedList<String> backup = (LinkedList<String>) shopQueue.clone();.
+
+Clear list: shopQueue.clear();.

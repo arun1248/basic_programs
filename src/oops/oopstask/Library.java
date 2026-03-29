@@ -1,17 +1,19 @@
 package oops.oopstask;
 
+import collection.User;
+
 import java.util.ArrayList;
 
 public class Library {
 
-    ArrayList books;
-    ArrayList members;
+    ArrayList<Book> books;
+    ArrayList<Member> members;
 
-    public Library(ArrayList books, ArrayList members) {
+    public Library(ArrayList<Book> books, ArrayList members) {
         this.books = books;
         this.members = new ArrayList();
         for (int i = 0; i < members.size(); i++) {
-            if (members.get(i) instanceof Member)
+            //if (members.get(i) instanceof Member)
                 registerMember((Member) members.get(i));
         }
     }
@@ -33,17 +35,19 @@ public class Library {
         System.out.println("Availability: "+availableOnly);
 
         for (int i = 0; i < books.size(); i++) {
-            if (books.get(i) instanceof Book) {
+          //  if (books.get(i) instanceof Book) {
                 if (availableOnly) {
-                    Book book = (Book) books.get(i);
+                    //Book book = (Book) books.get(i);
+                    Book book = books.get(i);
                     if (book.isAvailable) {
                         System.out.println(book.title);
                     } // else do nothing
                 } else {
-                    System.out.println(((Book) books.get(i)).title);
+                    System.out.println((books.get(i)).title);
                 }
-            }
+           // }
         }
     }
+
 
 }

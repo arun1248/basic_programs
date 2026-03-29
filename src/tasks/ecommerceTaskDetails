@@ -4,7 +4,7 @@ Using Scanner in OOPS task
     - Use instance variables and methods like List Products
     - Use Scanner inside methods (getProductsFromUser, getAdminFromUser, getCustomerFromUser, etc.,)
         - hint: user scanner's close function
-- First Admin flow is to create Admin and add Products
+- Admin flow is to create Admin and add Products
 - Customer flow
     - get customer details like products to buy, hint: use product id to get products
     - after getting products create Customer object with products
