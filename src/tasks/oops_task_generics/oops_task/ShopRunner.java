@@ -1,6 +1,7 @@
 package tasks.oops_task_generics.oops_task;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
 import java.util.Scanner;
 
 public class ShopRunner {

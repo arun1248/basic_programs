@@ -1,0 +1,23 @@
+Build a console-based Jewelry Inventory Manager using Java ArrayList to track gold/silver items,
+quantities, and rates—perfect for your shop app prototype.
+This project practices ArrayList operations like add, remove, update, search, and sort while
+handling real business logic.
+
+Project Overview
+Create an InventoryManager class with an ArrayList of JewelryItem
+objects (name, type like "Gold Ring", quantity, price per gram, total value).
+Include a menu for add/view/update/remove/search/sort low-stock items. Use Scanner for input
+and run in a loop until exit.
+
+Key features:
+
+Add new items dynamically.
+
+Display all or filtered (e.g., low stock <10).
+/*
+Update quantity
+
+Remove sold-out items.
+
+Calculate total inventory value.
+*/
