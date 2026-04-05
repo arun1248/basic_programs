@@ -15,10 +15,10 @@ public class JewelryItem implements Comparable<JewelryItem>{
         this.totalVal = pricePerGram*quantity;
     }
 
-    public double getTotalVal()
-    {
-        return totalVal;
-    }
+//    public double getTotalVal()
+//    {
+//        return totalVal;
+//    }
 
     @Override
     public int compareTo(JewelryItem o) {

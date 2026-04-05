@@ -14,25 +14,25 @@ public class InventoryManager {
         {
             switch (input){
                 case 1:
-                    jewels = addItems();
+                    addItems();
                     break;
                 case 2:
-                    viewLists(jewels);
+                    viewLists();
                     break;
                 case 3:
-                    update(jewels);
+                    update();
                     break;
                 case 4:
-                    removeOutOfStock(jewels);
+                    removeOutOfStock();
                     break;
                 case 5:
-                    search(jewels);
+                    search();
                     break;
                 case 6:
-                    checkLowStock(jewels);
+                    checkLowStock();
                     break;
                 case 7:
-                    calcTotInventoryVal(jewels);
+                    calcTotInventoryVal();
                     break;
                 default:
                     System.out.println("Enter Valid input");
@@ -46,7 +46,7 @@ public class InventoryManager {
         }
     }
 
-    public static ArrayList<JewelryItem> addItems()
+    public static void addItems()
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("do you want to add jewel? Yes or No");
@@ -68,13 +68,12 @@ public class InventoryManager {
             System.out.println("do you want to continue? Yes or No");
             input = sc.nextLine();
         }
-        return jewels;
     }
-    public static void viewLists(ArrayList<JewelryItem> jewels)
+    public static void viewLists()
     {
         System.out.println("List of jewels: "+jewels);
     }
-    public static void checkLowStock(ArrayList<JewelryItem> jewels)
+    public static void checkLowStock()
     {
         Collections.sort(jewels);
         System.out.println("List of jewels with lowStock(quantity < 10) ");
@@ -84,25 +83,19 @@ public class InventoryManager {
             if(jewel.quantity < 10) System.out.println(jewel);
         }
     }
-    public static void removeOutOfStock(ArrayList<JewelryItem> jewels)
+    public static void removeOutOfStock()
     {
-        boolean flag = true;
-        String type = "",name = "";
+        ArrayList<JewelryItem> outOfStockItem = new ArrayList<>();
         for(int i = 0; i < jewels.size(); i++) {
             JewelryItem jewel = jewels.get(i);
             if (jewel.quantity == 0) {
-                flag = true;
-                type = jewel.type;
-                name = jewel.name;
+                outOfStockItem.add(jewel);
                 jewels.remove(jewel);
             }
         }
-        if(flag)
-            System.out.println("Out of Stock: " + type + " " + name+" is removed");
-        else
-            System.out.println("No Out of Stock Product");
+        System.out.println("Out of stock items: "+outOfStockItem);
     }
-    public static void update(ArrayList<JewelryItem> jewels)
+    public static void update()
     {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the name of jewel to be updated");
@@ -113,13 +106,11 @@ public class InventoryManager {
         {
             JewelryItem jewel = jewels.get(i);
             if(jewel.name.equalsIgnoreCase(name))
-            {
-                jewels.set(i,new JewelryItem(jewel.name, jewel.type, quantity, jewel.pricePerGram));
-            }
+                jewel.quantity = quantity;
         }
         System.out.println("Jewel list after updation: "+jewels);
     }
-    public static void search(ArrayList<JewelryItem> jewels)
+    public static void search()
     {
         boolean flag = false;
         Scanner sc = new Scanner(System.in);
@@ -127,8 +118,10 @@ public class InventoryManager {
         String name = sc.nextLine();
         for(int i = 0; i < jewels.size(); i++) {
             JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name))
+            if(jewel.name.equalsIgnoreCase(name)) {
                 flag = true;
+                break;
+            }
         }
         //ToDo is it possible with contains
         if(flag)
@@ -137,7 +130,7 @@ public class InventoryManager {
             System.out.println(name+ " is not present");
 
     }
-    public static void calcTotInventoryVal(ArrayList<JewelryItem> jewels)
+    public static void calcTotInventoryVal()
     {
         int totalVal = 0;
         int availableInventoryVal = 100;
