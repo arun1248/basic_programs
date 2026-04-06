@@ -9,12 +9,12 @@ public class Library {
     ArrayList<Book> books;
     ArrayList<Member> members;
 
-    public Library(ArrayList<Book> books, ArrayList members) {
+    public Library(ArrayList<Book> books, ArrayList<Member> members) {
         this.books = books;
         this.members = new ArrayList();
         for (int i = 0; i < members.size(); i++) {
             //if (members.get(i) instanceof Member)
-                registerMember((Member) members.get(i));
+                registerMember(members.get(i));
         }
     }
 
