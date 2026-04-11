@@ -3,10 +3,14 @@ package tasks.arrayListTask;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class InventoryManager {
     static ArrayList<JewelryItem> jewels = new ArrayList<>();
     public static void main(String[] args) {
+        jewels.add(new JewelryItem("Ring", "Gold", 8, 10000));
+        jewels.add(new JewelryItem("Chain", "Gold", 0, 20000));
+        jewels.add(new JewelryItem("Necklace", "Gold", 20, 30000));
         Scanner sc = new Scanner(System.in);
         System.out.println("1.add, 2.view, 3.update 4.remove 5.search 6.sort low-stock items 7.Calculate total inventory value");
         int input = Integer.parseInt(sc.nextLine());
@@ -77,15 +81,20 @@ public class InventoryManager {
     {
         Collections.sort(jewels);
         System.out.println("List of jewels with lowStock(quantity < 10) ");
-        for(int i = 0; i < jewels.size(); i++)
-        {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.quantity < 10) System.out.println(jewel);
-        }
+//        for(int i = 0; i < jewels.size(); i++)
+//        {
+//            JewelryItem jewel = jewels.get(i);
+//            if(jewel.quantity < 10) System.out.println(jewel);
+//        }
+        System.out.println("List of jewels with lowStock(quantity < 10): "+
+                 jewels.stream()
+                .filter(jewel -> jewel.quantity < 10)
+                         .toList());
     }
     public static void removeOutOfStock()
     {
         ArrayList<JewelryItem> outOfStockItem = new ArrayList<>();
+
         for(int i = 0; i < jewels.size(); i++) {
             JewelryItem jewel = jewels.get(i);
             if (jewel.quantity == 0) {
@@ -94,6 +103,12 @@ public class InventoryManager {
             }
         }
         System.out.println("Out of stock items: "+outOfStockItem);
+        // cannot remove
+//        System.out.println("List of outOfStock jewels): "+
+//                jewels.stream()
+//                        .filter(jewel -> jewel.quantity = 0)
+//                        .toList());
+
     }
     public static void update()
     {
@@ -102,32 +117,45 @@ public class InventoryManager {
         String name = sc.nextLine();
         System.out.println("Enter the quantity to be updated");
         int quantity = Integer.parseInt(sc.nextLine());
-        for(int i = 0; i < jewels.size(); i++)
-        {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name))
-                jewel.quantity = quantity;
-        }
-        System.out.println("Jewel list after updation: "+jewels);
+//        for(int i = 0; i < jewels.size(); i++)
+//        {
+//            JewelryItem jewel = jewels.get(i);
+//            if(jewel.name.equalsIgnoreCase(name))
+//                jewel.quantity = quantity;
+//        }
+        System.out.println("Jewel list after updation: "+
+                jewels.stream()
+                .filter(jewel -> jewel.name.equalsIgnoreCase(name))
+                        .map(jewel -> {
+                            jewel.quantity = quantity;
+                                return jewel;
+                        })
+                        .toList());
+       // System.out.println("Jewel list after updation: "+jewels);
     }
     public static void search()
     {
-        boolean flag = false;
+        //boolean flag = false;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter jewel name to be searched");
         String name = sc.nextLine();
-        for(int i = 0; i < jewels.size(); i++) {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name)) {
-                flag = true;
-                break;
-            }
-        }
-        //ToDo is it possible with contains
-        if(flag)
-            System.out.println(name+ " is present");
-        else
-            System.out.println(name+ " is not present");
+//        for(int i = 0; i < jewels.size(); i++) {
+//            JewelryItem jewel = jewels.get(i);
+//            if(jewel.name.equalsIgnoreCase(name)) {
+//                flag = true;
+//                break;
+//            }
+//        }
+//        //ToDo is it possible with contains
+//        if(flag)
+//            System.out.println(name+ " is present");
+//        else
+//            System.out.println(name+ " is not present");
+
+        System.out.println(jewels.stream()
+                        .filter(jewel -> jewel.name.equalsIgnoreCase(name))
+                        .toList()
+                        +" is present");
 
     }
     public static void calcTotInventoryVal()
