@@ -32,7 +32,7 @@ public class Test {
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
+                        System.out.println("InterruptedException");
                     }
                     return element.contains("d");
                 });

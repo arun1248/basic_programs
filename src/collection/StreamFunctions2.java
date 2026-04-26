@@ -10,6 +10,7 @@ import java.util.function.Supplier;
 
 public class StreamFunctions2 {
 
+    // Method Reference
     public static void main(String[] args) {
         List<Laptop> laptops = new ArrayList<Laptop>();
         laptops.add(new Laptop(8, "intel", false));
