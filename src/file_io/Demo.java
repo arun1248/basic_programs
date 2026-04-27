@@ -46,11 +46,17 @@ public class Demo {
         printDetails("f3", f3);
         printDetails("f4", f4);
 
+        System.out.println(new File("src/test/data/file.txt").exists());
+        System.out.println(new File("src/test/data/file.txt").getPath());
+        System.out.println(new File("src/test/../test/data/file.txt").getPath());
+        System.out.println(new File("src/test/../test/data/file.txt").exists());
+        System.out.println(new File("src/test/data/file.txt").getAbsolutePath());
+
         System.out.println("Hi, \"Nazrin\"");
 
         System.out.println(new File("src\\file_io\\test.txt").exists());
 
-        boolean createdDir = new File("src\\file_io\\test").mkdir();
+        boolean createdDir = new File("src\\file_io\\test\\new").mkdirs();
         System.out.println(createdDir);
 
 
