@@ -3,9 +3,8 @@ package tasks.arrayListTask;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
-public class InventoryManager {
+public class InventoryManagerDeclarative {
     static ArrayList<JewelryItem> jewels = new ArrayList<>();
     public static void main(String[] args) {
         jewels.add(new JewelryItem("Ring", "Gold", 8, 10000));
@@ -79,14 +78,10 @@ public class InventoryManager {
     }
     public static void checkLowStock()
     {
-        Collections.sort(jewels);
-        System.out.println("List of jewels with lowStock(quantity < 10) ");
-        for(int i = 0; i < jewels.size(); i++)
-        {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.quantity < 10) System.out.println(jewel);
-        }
-
+        System.out.println("List of jewels with lowStock(quantity < 10): "+
+                 jewels.stream()
+                .filter(jewel -> jewel.quantity < 10)
+                         .toList());
     }
     public static void removeOutOfStock()
     {
@@ -100,6 +95,12 @@ public class InventoryManager {
             }
         }
         System.out.println("Out of stock items: "+outOfStockItem);
+        // cannot remove
+//        System.out.println("List of outOfStock jewels): "+
+//                jewels.stream()
+//                        .filter(jewel -> jewel.quantity = 0)
+//                        .toList());
+
     }
     public static void update()
     {
@@ -108,37 +109,32 @@ public class InventoryManager {
         String name = sc.nextLine();
         System.out.println("Enter the quantity to be updated");
         int quantity = Integer.parseInt(sc.nextLine());
-        for(int i = 0; i < jewels.size(); i++)
-        {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name))
-                jewel.quantity = quantity;
-        }
-        System.out.println("Jewel list after updation: "+jewels);
+
+        System.out.println("Jewel list after updation: "+
+                jewels.stream()
+                .filter(jewel -> jewel.name.equalsIgnoreCase(name))
+                        .map(jewel -> {
+                            jewel.quantity = quantity;
+                                return jewel;
+                        })
+                        .toList());
     }
     public static void search()
     {
-        boolean flag = false;
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter jewel name to be searched");
         String name = sc.nextLine();
-        for(int i = 0; i < jewels.size(); i++) {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name)) {
-                flag = true;
-                break;
-            }
-        }
+        System.out.println(jewels.stream()
+                        .filter(jewel -> jewel.name.equalsIgnoreCase(name))
+                        .toList()
+                        +" is present");
 
-        if(flag)
-            System.out.println(name+ " is present");
-        else
-            System.out.println(name+ " is not present");
     }
     public static void calcTotInventoryVal()
     {
         int totalVal = 0;
         int availableInventoryVal = 100;
+        
         for(int i = 0; i < jewels.size(); i++) {
             JewelryItem jewel = jewels.get(i);
             totalVal = totalVal + jewel.quantity;

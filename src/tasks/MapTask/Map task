@@ -1,0 +1,19 @@
+Create a program that stores student names and marks using a Map.
+
+Requirements  - Student class - Key , subject class - Value
+Add at least 5 students with their marks.
+
+Print all student names and marks.
+
+Find and print the mark of one specific student.
+
+Update one student's mark.
+
+Remove one student from the map.
+
+Display the final map.
+
+Bonus challenge
+Print the student with the highest mark.
+
+Count how many students have marks above 200.
