@@ -11,13 +11,13 @@ import java.util.Collections;
 //https://docs.oracle.com/javase/tutorial/essential/io/index.html
 public class FileInputStreamDemo {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         FileInputStream in = null;
         FileOutputStream out = null;
 
         try {
-            in = new FileInputStream("src/exception_handling/exception_handling.png");
-            out = new FileOutputStream("src/file_io/new.png");
+            in = new FileInputStream("src/file_io/xanadu.txt");
+            out = new FileOutputStream("src/file_io/outagain.txt");
             int c;
             ArrayList<Integer> lst = new ArrayList<>();
             while ((c = in.read()) != -1) {
@@ -27,6 +27,7 @@ public class FileInputStreamDemo {
             }
             Collections.sort(lst);
             System.out.println(lst);
+            System.out.println(lst.size());
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
         } catch (IOException e) {
@@ -36,17 +37,19 @@ public class FileInputStreamDemo {
                 try {
                     in.close();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("can't close in");
                 }
             }
             if (out != null) {
                 try {
                     out.close();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    System.out.println("can't close out");
                 }
             }
         }
+
+        // in.read(); // Stream Closed
     }
 
 }
