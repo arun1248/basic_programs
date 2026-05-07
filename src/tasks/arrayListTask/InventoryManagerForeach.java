@@ -1,11 +1,9 @@
 package tasks.arrayListTask;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 
-public class InventoryManager {
+public class InventoryManagerForeach {
     static ArrayList<JewelryItem> jewels = new ArrayList<>();
     public static void main(String[] args) {
         jewels.add(new JewelryItem("Ring", "Gold", 8, 10000));
@@ -79,27 +77,24 @@ public class InventoryManager {
     }
     public static void checkLowStock()
     {
-        Collections.sort(jewels);
-        System.out.println("List of jewels with lowStock(quantity < 10) ");
-        for(int i = 0; i < jewels.size(); i++)
+        System.out.println("List of jewels with lowStock(quantity < 10):");
+        for(JewelryItem jewel : jewels)
         {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.quantity < 10) System.out.println(jewel);
+            if(jewel.quantity < 10)
+                System.out.println(jewel);
         }
-
     }
     public static void removeOutOfStock()
     {
-        ArrayList<JewelryItem> outOfStockItem = new ArrayList<>();
-
-        for(int i = 0; i < jewels.size(); i++) {
-            JewelryItem jewel = jewels.get(i);
-            if (jewel.quantity == 0) {
-                outOfStockItem.add(jewel);
+        System.out.println("Out of Stock item: ");
+        for(JewelryItem jewel : jewels)
+        {
+            if(jewel.quantity == 0)
+            {
+                System.out.println(jewel);
                 jewels.remove(jewel);
             }
         }
-        System.out.println("Out of stock items: "+outOfStockItem);
     }
     public static void update()
     {
@@ -108,40 +103,48 @@ public class InventoryManager {
         String name = sc.nextLine();
         System.out.println("Enter the quantity to be updated");
         int quantity = Integer.parseInt(sc.nextLine());
-        for(int i = 0; i < jewels.size(); i++)
-        {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name))
-                jewel.quantity = quantity;
-        }
-        System.out.println("Jewel list after updation: "+jewels);
+
+        System.out.println("Jewel list after updation: ");
+
+//        for (JewelryItem jewel : jewels){
+//            if(jewel.name.equalsIgnoreCase(name)){
+//                jewel.quantity = quantity;
+//                System.out.println(jewel);
+//            }
+//        }
+
+        jewels.stream()
+                .filter(jewel -> jewel.name.equalsIgnoreCase(name))
+                .forEach(jewel -> {
+                    jewel.quantity = quantity;
+                    System.out.println(jewel);
+                });
     }
     public static void search()
     {
-        boolean flag = false;
         Scanner sc = new Scanner(System.in);
+        boolean flag = false;
         System.out.println("Enter jewel name to be searched");
         String name = sc.nextLine();
-        for(int i = 0; i < jewels.size(); i++) {
-            JewelryItem jewel = jewels.get(i);
-            if(jewel.name.equalsIgnoreCase(name)) {
+        for (JewelryItem jewel : jewels){
+            if(jewel.name.equalsIgnoreCase(name)){
+                System.out.println(jewel+ " is present");
                 flag = true;
                 break;
             }
         }
+        if(!flag){
+            System.out.println(name+" is not present");
+        }
 
-        if(flag)
-            System.out.println(name+ " is present");
-        else
-            System.out.println(name+ " is not present");
     }
     public static void calcTotInventoryVal()
     {
         int totalVal = 0;
         int availableInventoryVal = 100;
-        for(int i = 0; i < jewels.size(); i++) {
-            JewelryItem jewel = jewels.get(i);
-            totalVal = totalVal + jewel.quantity;
+        
+        for (JewelryItem jewel : jewels){
+            totalVal = totalVal+jewel.quantity;
         }
         availableInventoryVal = availableInventoryVal - totalVal;
         if(availableInventoryVal > 0)

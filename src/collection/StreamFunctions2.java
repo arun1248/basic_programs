@@ -63,5 +63,4 @@ public class StreamFunctions2 {
         laptop.process = laptop.process.toUpperCase();
         System.out.println(laptop);
     }
-
 }
